@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct K {
+    struct url {
+        static let allLaunches = "https://api.spacexdata.com/v5/launches"
+    }
+}

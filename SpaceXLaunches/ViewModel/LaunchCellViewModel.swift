@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct LaunchCellViewModel {
+    var rocketName: String
+}

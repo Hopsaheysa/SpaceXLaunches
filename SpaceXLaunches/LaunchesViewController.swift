@@ -11,6 +11,9 @@ class LaunchesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    lazy var viewModel = {
+        LaunchViewModel()
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,12 @@ class LaunchesViewController: UIViewController {
     }
     
     func initViewModel() {
-        //TODO: add code
+        viewModel.getLaunches()
+        viewModel.reloadTableView = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -45,12 +53,13 @@ extension LaunchesViewController: UITableViewDelegate {
 //MARK: - UITableViewDataSource
 extension LaunchesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.launchCellViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: LaunchCell.identifier, for: indexPath)
-                as? LaunchCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LaunchCell.identifier, for: indexPath) as? LaunchCell else { return UITableViewCell() }
+        let cellVM = viewModel.getCellViewModel(at: indexPath)
+        cell.cellViewModel = cellVM
         return cell
     }
     

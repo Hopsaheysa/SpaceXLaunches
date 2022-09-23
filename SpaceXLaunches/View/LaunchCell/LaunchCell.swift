@@ -14,6 +14,13 @@ class LaunchCell: UITableViewCell {
     class var identifier: String { return String(describing: self) }
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil)}
     
+    var cellViewModel: LaunchCellViewModel? {
+        didSet {
+            nameLabel.text = cellViewModel?.rocketName
+        }
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         initView()

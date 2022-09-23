@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias Launches = [Launch]
+
 struct Launch: Codable {
     var rocketName: String?
     
