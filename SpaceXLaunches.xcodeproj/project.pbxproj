@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		EA1E8BD028DCF257008BA395 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1E8BCF28DCF257008BA395 /* AppDelegate.swift */; };
 		EA1E8BD228DCF257008BA395 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1E8BD128DCF257008BA395 /* SceneDelegate.swift */; };
-		EA1E8BD428DCF257008BA395 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1E8BD328DCF257008BA395 /* ViewController.swift */; };
+		EA1E8BD428DCF257008BA395 /* LaunchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1E8BD328DCF257008BA395 /* LaunchesViewController.swift */; };
 		EA1E8BD728DCF257008BA395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1E8BD528DCF257008BA395 /* Main.storyboard */; };
 		EA1E8BD928DCF258008BA395 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1E8BD828DCF258008BA395 /* Assets.xcassets */; };
 		EA1E8BDC28DCF258008BA395 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1E8BDA28DCF258008BA395 /* LaunchScreen.storyboard */; };
+		EAD9CD6828DE3C5E00F734E7 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD9CD6728DE3C5E00F734E7 /* Launch.swift */; };
+		EAD9CD6B28DE3C9F00F734E7 /* LaunchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD9CD6928DE3C9F00F734E7 /* LaunchCell.swift */; };
+		EAD9CD6C28DE3C9F00F734E7 /* LaunchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD9CD6A28DE3C9F00F734E7 /* LaunchCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EA1E8BCC28DCF257008BA395 /* SpaceXLaunches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXLaunches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1E8BCF28DCF257008BA395 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA1E8BD128DCF257008BA395 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EA1E8BD328DCF257008BA395 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EA1E8BD328DCF257008BA395 /* LaunchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesViewController.swift; sourceTree = "<group>"; };
 		EA1E8BD628DCF257008BA395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA1E8BD828DCF258008BA395 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA1E8BDB28DCF258008BA395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA1E8BDD28DCF258008BA395 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAD9CD6728DE3C5E00F734E7 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		EAD9CD6928DE3C9F00F734E7 /* LaunchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCell.swift; sourceTree = "<group>"; };
+		EAD9CD6A28DE3C9F00F734E7 /* LaunchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,58 @@
 		EA1E8BCE28DCF257008BA395 /* SpaceXLaunches */ = {
 			isa = PBXGroup;
 			children = (
+				EAD9CD5E28DE387D00F734E7 /* Services */,
+				EAD9CD6628DE3AEA00F734E7 /* Model */,
+				EAD9CD6528DE3ADF00F734E7 /* View */,
+				EAD9CD5D28DE387300F734E7 /* ViewModel */,
 				EA1E8BCF28DCF257008BA395 /* AppDelegate.swift */,
 				EA1E8BD128DCF257008BA395 /* SceneDelegate.swift */,
-				EA1E8BD328DCF257008BA395 /* ViewController.swift */,
-				EA1E8BD528DCF257008BA395 /* Main.storyboard */,
+				EA1E8BD328DCF257008BA395 /* LaunchesViewController.swift */,
 				EA1E8BD828DCF258008BA395 /* Assets.xcassets */,
 				EA1E8BDA28DCF258008BA395 /* LaunchScreen.storyboard */,
 				EA1E8BDD28DCF258008BA395 /* Info.plist */,
 			);
 			path = SpaceXLaunches;
+			sourceTree = "<group>";
+		};
+		EAD9CD5D28DE387300F734E7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EAD9CD5E28DE387D00F734E7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EAD9CD6528DE3ADF00F734E7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EA1E8BD528DCF257008BA395 /* Main.storyboard */,
+				EAD9CD6D28DE3CA900F734E7 /* LaunchCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EAD9CD6628DE3AEA00F734E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EAD9CD6728DE3C5E00F734E7 /* Launch.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EAD9CD6D28DE3CA900F734E7 /* LaunchCell */ = {
+			isa = PBXGroup;
+			children = (
+				EAD9CD6928DE3C9F00F734E7 /* LaunchCell.swift */,
+				EAD9CD6A28DE3C9F00F734E7 /* LaunchCell.xib */,
+			);
+			path = LaunchCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +176,7 @@
 			files = (
 				EA1E8BDC28DCF258008BA395 /* LaunchScreen.storyboard in Resources */,
 				EA1E8BD928DCF258008BA395 /* Assets.xcassets in Resources */,
+				EAD9CD6C28DE3C9F00F734E7 /* LaunchCell.xib in Resources */,
 				EA1E8BD728DCF257008BA395 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,8 +188,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA1E8BD428DCF257008BA395 /* ViewController.swift in Sources */,
+				EA1E8BD428DCF257008BA395 /* LaunchesViewController.swift in Sources */,
 				EA1E8BD028DCF257008BA395 /* AppDelegate.swift in Sources */,
+				EAD9CD6828DE3C5E00F734E7 /* Launch.swift in Sources */,
+				EAD9CD6B28DE3C9F00F734E7 /* LaunchCell.swift in Sources */,
 				EA1E8BD228DCF257008BA395 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
