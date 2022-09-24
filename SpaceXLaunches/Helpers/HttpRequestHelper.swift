@@ -14,7 +14,7 @@ enum HTTPHeaderFields {
 }
 
 class HttpRequestHelper {
-    func GET(url: String, params: [String: String], httpHeader: HTTPHeaderFields, complete: @escaping (Bool, Data?, String?) -> ()) {
+    func GET(url: String, params: [String: String], httpHeader: HTTPHeaderFields, complete: @escaping (Bool, Data?, String?) -> ()) {        
         guard var components = URLComponents(string: url) else {
             //Error: cannot create URLCompontents
             return
@@ -44,15 +44,15 @@ class HttpRequestHelper {
         let session = URLSession(configuration: config)
         session.dataTask(with: request) { data, response, error in
             guard error == nil else {
-                complete(false, nil, error?.localizedDescription)
+                complete(false, nil, error!.localizedDescription)
                 return
             }
             guard let data = data else {
-                complete(false, nil, "Error: did not receive data")
+                complete(false, nil, ErrorResponse.noData.errorDescription)
                 return
             }
             guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-                complete(false, nil, "Error: HTTP request failed")
+                complete(false, nil, ErrorResponse.requestFail.errorDescription)
                 return
             }
             complete(true, data, nil)

@@ -42,6 +42,13 @@ class LaunchesViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
+        viewModel.showError = {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Error", message: self.viewModel.error , preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+        }
     }
 }
 

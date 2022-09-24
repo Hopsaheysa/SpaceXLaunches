@@ -12,6 +12,7 @@
 		EA09543428DE55C8007A8E60 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09543328DE55C8007A8E60 /* K.swift */; };
 		EA09543628DE576B007A8E60 /* LaunchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09543528DE576B007A8E60 /* LaunchCellViewModel.swift */; };
 		EA09543828DE5794007A8E60 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09543728DE5794007A8E60 /* LaunchViewModel.swift */; };
+		EA09543A28DF8777007A8E60 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09543928DF8777007A8E60 /* ErrorResponse.swift */; };
 		EA1E8BD028DCF257008BA395 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1E8BCF28DCF257008BA395 /* AppDelegate.swift */; };
 		EA1E8BD228DCF257008BA395 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1E8BD128DCF257008BA395 /* SceneDelegate.swift */; };
 		EA1E8BD428DCF257008BA395 /* LaunchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1E8BD328DCF257008BA395 /* LaunchesViewController.swift */; };
@@ -29,6 +30,7 @@
 		EA09543328DE55C8007A8E60 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		EA09543528DE576B007A8E60 /* LaunchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCellViewModel.swift; sourceTree = "<group>"; };
 		EA09543728DE5794007A8E60 /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
+		EA09543928DF8777007A8E60 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		EA1E8BCC28DCF257008BA395 /* SpaceXLaunches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXLaunches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1E8BCF28DCF257008BA395 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA1E8BD128DCF257008BA395 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				EAD9CD6728DE3C5E00F734E7 /* LaunchResponse.swift */,
+				EA09543928DF8777007A8E60 /* ErrorResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				EAD9CD6828DE3C5E00F734E7 /* LaunchResponse.swift in Sources */,
 				EA09543628DE576B007A8E60 /* LaunchCellViewModel.swift in Sources */,
 				EA09543428DE55C8007A8E60 /* K.swift in Sources */,
+				EA09543A28DF8777007A8E60 /* ErrorResponse.swift in Sources */,
 				EAD9CD6B28DE3C9F00F734E7 /* LaunchCell.swift in Sources */,
 				EA1E8BD228DCF257008BA395 /* SceneDelegate.swift in Sources */,
 			);

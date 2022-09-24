@@ -7,16 +7,24 @@
 
 import Foundation
 
-class LaunchViewModel: NSObject {
+final class LaunchViewModel: NSObject {
     private var launchService: LaunchServiceProtocol
     
     
     var reloadTableView: (() -> Void)?
+    var showError: (() -> Void)?
+    
     var launches = Launches()
     
     var launchCellViewModels = [LaunchCellViewModel]() {
         didSet {
             reloadTableView?()
+        }
+    }
+    
+    var error: String? {
+        didSet {
+            showError?()
         }
     }
     
@@ -30,7 +38,7 @@ class LaunchViewModel: NSObject {
             if success, let launches = result {
                 self.fetchData(launches: launches)
             } else {
-                //TODO: let user know what was the problem
+                self.showError(error: error)
             }
         }
     }
@@ -42,6 +50,15 @@ class LaunchViewModel: NSObject {
             vms.append(createCellModel(launch: launch))
         }
         launchCellViewModels = vms
+    }
+    
+    func showError(error: String?) {
+        if let error = error {
+            self.error = error
+        } else {
+            self.error = ErrorResponse.unknownFail.errorDescription
+        }
+        
     }
     
     func createCellModel(launch: Launch) -> LaunchCellViewModel {
