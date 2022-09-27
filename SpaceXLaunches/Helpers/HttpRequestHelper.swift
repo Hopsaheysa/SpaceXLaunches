@@ -43,11 +43,11 @@ class HttpRequestHelper {
                 return
             }
             guard let data = data else {
-                complete(false, nil, ErrorResponse.noData.errorDescription)
+                complete(false, nil, ErrorEnum.noData.errorDescription)
                 return
             }
             guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-                complete(false, nil, ErrorResponse.requestFail.errorDescription)
+                complete(false, nil, ErrorEnum.requestFail.errorDescription)
                 return
             }
             complete(true, data, nil)

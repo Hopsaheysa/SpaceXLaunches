@@ -18,6 +18,8 @@ class LaunchCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     
+    @IBOutlet weak var successLabel: UILabel!
+    @IBOutlet weak var successImageView: UIImageView!
     @IBOutlet weak var detailLabel: UILabel!
     
     @IBOutlet weak var cellView: UIView!
@@ -47,13 +49,25 @@ class LaunchCell: UITableViewCell {
             }
             
             if ((cellViewModel?.upcoming) == true ) {
-                cellView.backgroundColor = .brown
+                cellView.backgroundColor = .systemBlue
             } else {
                 cellView.backgroundColor = .clear
             }
-
-
- 
+            
+            if ((cellViewModel?.success) == true ) {
+                successLabel.text = "Success"
+                successImageView.image = UIImage(systemName: "checkmark.seal.fill")
+                successImageView.tintColor = .green
+            } else {
+                if ((cellViewModel?.upcoming) == true ) {
+                    successImageView.isHidden = true
+                    successLabel.isHidden = true
+                } else {
+                    successLabel.text = "Fail"
+                    successImageView.image = UIImage(systemName: "xmark.seal.fill")
+                    successImageView.tintColor = .red
+                }
+            }
         }
     }
 
@@ -63,10 +77,8 @@ class LaunchCell: UITableViewCell {
     }
     
     func initView() {
-        // Cell view customization
         backgroundColor = .clear
         
-        // Line separator full width
         preservesSuperviewLayoutMargins = false
         separatorInset = UIEdgeInsets.zero
         layoutMargins = UIEdgeInsets.zero
@@ -79,6 +91,9 @@ class LaunchCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         nameLabel.text = nil
+        thumbnailImageView.image = nil
+        successImageView.isHidden = false
+        successLabel.isHidden = false
     }
     
     @objc func cellTapped() {

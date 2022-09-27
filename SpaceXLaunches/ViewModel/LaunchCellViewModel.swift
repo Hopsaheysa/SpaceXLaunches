@@ -13,9 +13,9 @@ struct LaunchCellViewModel {
     var rocketName: String
     var details: String
     var upcoming: Bool
+    var success: Bool
     var date: Date
     
-    var webcast: String?
     var article: String?
     var wikipedia: String?
     var youtubeId: String?

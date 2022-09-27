@@ -35,9 +35,8 @@ class LaunchesViewController: UIViewController, UINavigationControllerDelegate {
 
 
     func initView() {
-        // TableView customization
         tableView.dataSource = self
-        tableView.backgroundColor = UIColor.gray
+        tableView.backgroundColor = UIColor.lightGray
         tableView.separatorColor = .white
         tableView.separatorStyle = .singleLine
         tableView.tableFooterView = UIView()

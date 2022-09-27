@@ -18,8 +18,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEu-9M-HGE">
-                        <rect key="frame" x="76" y="7.9999999999999982" width="41.333333333333343" height="20.333333333333329"/>
+                        <rect key="frame" x="76" y="7.9999999999999982" width="192" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pC-Vs-IrD">
+                        <rect key="frame" x="76" y="32.333333333333336" width="26.666666666666671" height="14.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -33,25 +39,51 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrn-0P-Dma">
-                        <rect key="frame" x="76" y="50.666666666666664" width="27" height="12"/>
+                        <rect key="frame" x="76" y="50.666666666666664" width="240" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pC-Vs-IrD">
-                        <rect key="frame" x="76" y="32.333333333333336" width="26.666666666666671" height="14.333333333333336"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAa-PF-Vtl">
+                        <rect key="frame" x="268" y="0.0" width="52" height="46"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRu-pn-M3t">
+                                <rect key="frame" x="7.6666666666666856" y="4" width="37" height="11"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="weo-cE-81u">
+                                <rect key="frame" x="14" y="19" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="7A8-h4-ogi"/>
+                                    <constraint firstAttribute="height" constant="24" id="PeT-Qa-kj2"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="46" id="0HG-3v-gFI"/>
+                            <constraint firstItem="jRu-pn-M3t" firstAttribute="centerX" secondItem="MAa-PF-Vtl" secondAttribute="centerX" id="Ag6-So-lpD"/>
+                            <constraint firstAttribute="width" constant="52" id="Cpp-D4-8oI"/>
+                            <constraint firstItem="weo-cE-81u" firstAttribute="centerX" secondItem="jRu-pn-M3t" secondAttribute="centerX" id="D4c-Ov-IOF"/>
+                            <constraint firstItem="weo-cE-81u" firstAttribute="top" secondItem="jRu-pn-M3t" secondAttribute="bottom" constant="4" id="Dwd-5G-yEW"/>
+                            <constraint firstItem="jRu-pn-M3t" firstAttribute="top" secondItem="MAa-PF-Vtl" secondAttribute="top" constant="4" id="wU5-mO-Uhz"/>
+                        </constraints>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="7pC-Vs-IrD" firstAttribute="leading" secondItem="rnd-Ul-7kf" secondAttribute="trailing" constant="4" id="3XY-T2-gc1"/>
                     <constraint firstItem="jrn-0P-Dma" firstAttribute="leading" secondItem="rnd-Ul-7kf" secondAttribute="trailing" constant="4" id="7vP-lE-vWh"/>
                     <constraint firstItem="UEu-9M-HGE" firstAttribute="top" secondItem="rnd-Ul-7kf" secondAttribute="top" constant="4" id="BZ0-Mm-2YW"/>
+                    <constraint firstAttribute="trailing" secondItem="MAa-PF-Vtl" secondAttribute="trailing" id="EUi-t4-MrR"/>
                     <constraint firstItem="jrn-0P-Dma" firstAttribute="top" secondItem="7pC-Vs-IrD" secondAttribute="bottom" constant="4" id="Lec-QB-ZMR"/>
                     <constraint firstItem="rnd-Ul-7kf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="SHJ-93-oyD"/>
+                    <constraint firstAttribute="trailing" secondItem="jrn-0P-Dma" secondAttribute="trailing" constant="4" id="T70-sU-dvI"/>
                     <constraint firstItem="7pC-Vs-IrD" firstAttribute="top" secondItem="UEu-9M-HGE" secondAttribute="bottom" constant="4" id="Xlj-Np-qHI"/>
+                    <constraint firstItem="MAa-PF-Vtl" firstAttribute="leading" secondItem="UEu-9M-HGE" secondAttribute="trailing" id="XwU-D3-9jw"/>
+                    <constraint firstItem="MAa-PF-Vtl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="azZ-xc-CLL"/>
                     <constraint firstItem="UEu-9M-HGE" firstAttribute="leading" secondItem="rnd-Ul-7kf" secondAttribute="trailing" constant="4" id="jhV-ea-30n"/>
                     <constraint firstItem="rnd-Ul-7kf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="x2d-vo-p0Q"/>
                 </constraints>
@@ -62,6 +94,8 @@
                 <outlet property="dateLabel" destination="7pC-Vs-IrD" id="Uod-eO-gS6"/>
                 <outlet property="detailLabel" destination="jrn-0P-Dma" id="XZK-4a-755"/>
                 <outlet property="nameLabel" destination="UEu-9M-HGE" id="zGb-5v-hXN"/>
+                <outlet property="successImageView" destination="weo-cE-81u" id="A83-p2-4Uk"/>
+                <outlet property="successLabel" destination="jRu-pn-M3t" id="R7e-I2-f4a"/>
                 <outlet property="thumbnailImageView" destination="rnd-Ul-7kf" id="viW-m6-DQ5"/>
             </connections>
             <point key="canvasLocation" x="90.769230769230759" y="-1.4218009478672986"/>

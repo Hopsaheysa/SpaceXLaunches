@@ -40,7 +40,7 @@ class LaunchService: LaunchServiceProtocol {
                     let model = try JSONDecoder().decode(Launches.self, from: data)
                     completion(true, model, nil)
                 } catch {
-                    completion(false, nil, ErrorResponse.decodingFail.errorDescription)
+                    completion(false, nil, ErrorEnum.decodingFail.errorDescription)
                 }
             } else {
                 completion(false, nil, error)

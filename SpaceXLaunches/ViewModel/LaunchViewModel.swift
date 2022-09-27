@@ -74,7 +74,7 @@ class LaunchViewModel {
         if let error = error {
             self.error = error
         } else {
-            self.error = ErrorResponse.unknownFail.errorDescription
+            self.error = ErrorEnum.unknownFail.errorDescription
         }
     }
     
@@ -86,9 +86,9 @@ class LaunchViewModel {
         let rocketName = launch.rocketName ?? ""
         let details = launch.details ?? ""
         let upcoming = launch.upcoming ?? false
+        let success = launch.success ?? false
         let date = launch.date ?? Date.distantPast
         
-        let webcast = launch.webcast
         let article = launch.article
         let wikipedia = launch.wikipedia
         let youtubeId = launch.youtubeId
@@ -96,22 +96,11 @@ class LaunchViewModel {
         let smallImageString = launch.smallImage
         let largeImageString = launch.largeImage
         
-//        var smallImageData: Observable<Data> = Observable()
-//        
-//        if let smallImageString = smallImageString {
-//            launchService.getImage(from: smallImageString) { success, results, error in
-//                if success, let data = results {
-//                    smallImageData = Observable<data>
-//                }
-//            }
-//        }
-//        
-        
         return LaunchCellViewModel(rocketName: rocketName,
                                    details: details,
                                    upcoming: upcoming,
+                                   success: success,
                                    date: date,
-                                   webcast: webcast,
                                    article: article,
                                    wikipedia: wikipedia,
                                    youtubeId: youtubeId,

@@ -7,11 +7,12 @@
 
 import Foundation
 
-enum ErrorResponse {
-    case noData, decodingFail, requestFail, dateFail, unknownFail, imageConversionFail, urlFail
+enum ErrorEnum {
+    case noData, decodingFail, requestFail, dateFail, unknownFail,
+         imageConversionFail, urlFail
 }
 
-extension ErrorResponse: LocalizedError {
+extension ErrorEnum: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .noData: return "Error: did not receive data"
