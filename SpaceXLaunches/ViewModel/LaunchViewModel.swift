@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
-final class LaunchViewModel: NSObject {
+class LaunchViewModel {
     private var launchService: LaunchServiceProtocol
+    //    private var cellPressedDelegate: LaunchCellDelegate
     
     
     var reloadTableView: (() -> Void)?
@@ -43,6 +45,8 @@ final class LaunchViewModel: NSObject {
         }
     }
     
+    
+    
     func fetchData(launches: Launches) {
         self.launches = launches
         var vms = [LaunchCellViewModel]()
@@ -58,16 +62,42 @@ final class LaunchViewModel: NSObject {
         } else {
             self.error = ErrorResponse.unknownFail.errorDescription
         }
-        
+    }
+    
+    func getDate(date: String) -> Date {
+        return DateHelper.stringToDate(date)
     }
     
     func createCellModel(launch: Launch) -> LaunchCellViewModel {
-        let rocketName = launch.rocketName
+        let rocketName = launch.rocketName ?? ""
+        let details = launch.details ?? ""
+        let upcoming = launch.upcoming ?? false
+        let date = launch.date ?? Date.distantPast
         
-        return LaunchCellViewModel(rocketName: rocketName ?? "---")
+        let webcast = launch.webcast
+        let article = launch.article
+        let wikipedia = launch.wikipedia
+        let youtubeId = launch.youtubeId
+        
+        let smallImageString = launch.smallImage
+        let largeImageString = launch.largeImage
+        
+        
+        
+        return LaunchCellViewModel(rocketName: rocketName,
+                                   details: details,
+                                   upcoming: upcoming,
+                                   date: date,
+                                   webcast: webcast,
+                                   article: article,
+                                   wikipedia: wikipedia,
+                                   youtubeId: youtubeId,
+                                   smallImageString: smallImageString,
+                                   largeImageString: largeImageString)
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> LaunchCellViewModel {
         return launchCellViewModels[indexPath.row]
     }
+    
 }

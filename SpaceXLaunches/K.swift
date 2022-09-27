@@ -11,4 +11,16 @@ struct K {
     struct url {
         static let allLaunches = "https://api.spacexdata.com/v5/launches"
     }
+    
+    struct segue {
+        static let toDetail = "launchesToDetail"
+    }
+    
+    struct storyboard {
+        static let main = "Main"
+    }
+    
+    struct identifier {
+        static let detailVC = "detailVC"
+    }
 }

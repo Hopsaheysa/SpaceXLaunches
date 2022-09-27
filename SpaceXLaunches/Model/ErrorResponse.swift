@@ -8,7 +8,7 @@
 import Foundation
 
 enum ErrorResponse {
-    case noData, decodingFail, requestFail, unknownFail
+    case noData, decodingFail, requestFail, dateFail, unknownFail, imageConversionFail, urlFail
 }
 
 extension ErrorResponse: LocalizedError {
@@ -17,7 +17,10 @@ extension ErrorResponse: LocalizedError {
         case .noData: return "Error: did not receive data"
         case .decodingFail: return "Error: Data decoding failed"
         case .requestFail: return "Error: HTTP request failed"
+        case .dateFail: return "Date string does not match format expected by formatter."
         case .unknownFail: return "Fail: Unknown error"
+        case .imageConversionFail: return "Fail: Image not obtained"
+        case .urlFail: return "Fail: not valid URL"
         }
     }
 }
