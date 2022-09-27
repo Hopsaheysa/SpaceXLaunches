@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var viewDate: UIView!
+    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var detailTextView: UITextView!
     
@@ -22,9 +22,27 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let viewModel = viewModel else { return }
+        titleLabel.text = viewModel?.rocketName
+
+        if let detail = viewModel?.details {
+            detailTextView.text = detail
+        } else {
+            detailTextView.isHidden = true
+        }
         
-        titleLabel.text = viewModel.rocketName
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        if let date = viewModel?.date {
+            dateLabel.text = "Launch date: \(dateFormatter.string(from: date))"
+        } else {
+            dateLabel.text = "not filled"
+        }
+        
+        if let imageURL = viewModel?.largeImageString {
+            imageView.downloaded(from: imageURL)
+        }
+
+        
         
 
     }

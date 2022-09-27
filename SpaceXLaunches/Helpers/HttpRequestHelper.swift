@@ -15,18 +15,13 @@ enum HTTPHeaderFields {
 
 class HttpRequestHelper {
     func GET(url: String, params: [String: String], httpHeader: HTTPHeaderFields, complete: @escaping (Bool, Data?, String?) -> ()) {        
-        guard var components = URLComponents(string: url) else {
-            //Error: cannot create URLCompontents
-            return
-        }
+        guard var components = URLComponents(string: url) else { return }
         components.queryItems = params.map { key, value in
             URLQueryItem(name: key, value: value)
         }
 
-        guard let url = components.url else {
-            // Error: cannot create URL
-            return
-        }
+        guard let url = components.url else { return }
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
 

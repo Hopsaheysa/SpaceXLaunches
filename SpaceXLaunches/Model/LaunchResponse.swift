@@ -27,13 +27,14 @@ struct Launch: Codable {
     var smallImage: String?
     var largeImage: String?
     
-    
     enum LaunchKeys: String, CodingKey {
         case rocketName = "name"
         case links = "links"
         case details
         case upcoming
         case dateString = "date_utc"
+        
+        case smallImageData, largeImageData
     }
     
     enum LinksKeys: String, CodingKey {
@@ -55,9 +56,9 @@ extension Launch {
         rocketName = try? container.decode(String.self, forKey: .rocketName)
         
         
-        let details = try? container.decode(String.self, forKey: .details)
+        details = try? container.decode(String.self, forKey: .details)
         
-        self.upcoming = try? container.decode(Bool.self, forKey: .upcoming)
+        upcoming = try? container.decode(Bool.self, forKey: .upcoming)
         
         if let dateString = try? container.decode(String.self, forKey: .dateString) {
             self.dateString = dateString

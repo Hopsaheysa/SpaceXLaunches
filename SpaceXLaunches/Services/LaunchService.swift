@@ -11,9 +11,26 @@ protocol LaunchServiceProtocol {
     func getLaunches(completion: @escaping (_ success: Bool,
                                             _ results: Launches?,
                                             _ error: String?) -> ())
+    
+    func getImage(from urlString: String, completion: @escaping (_ success: Bool,
+                                         _ results: Data?,
+                                         _ error: String?) -> ())
 }
 
 class LaunchService: LaunchServiceProtocol {
+    func getImage(from urlString: String, completion: @escaping (Bool, Data?, String?) -> ()) {
+        HttpRequestHelper().GET(url: urlString,
+                                params: ["":""],
+                                httpHeader: .application_json) { success, data, error in
+            if success, let data = data {
+                completion(success, data, nil)
+            } else {
+                completion(success, nil, error)
+            }
+        }
+    }
+    
+
     func getLaunches(completion: @escaping (Bool, Launches?, String?) -> ()) {
         HttpRequestHelper().GET(url: K.url.allLaunches,
                                 params: ["": ""],
@@ -30,31 +47,4 @@ class LaunchService: LaunchServiceProtocol {
             }
         }
     }
-    
-//    fileprivate func loadData() {
-//
-//        let url = URL(string: "http://ws-smartit.divisionautomotriz.com/wsApiCasaTrust/api/autos")!
-//
-//        let task = URLSession.shared.dataTask(with: url) {
-//            (data, response, error) in
-//
-//            guard let dataResponse = data, error == nil else {
-//                print(error?.localizedDescription ?? "Response Error")
-//                return
-//            }
-//
-//            do {
-//                let jsonResponse = try JSONSerialization.jsonObject(with: dataResponse, options: []) as? NSArray
-//                self.arrAutos = jsonResponse!.compactMap({ Autos($0 as? [String:String])})
-//
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
-//
-//            } catch let parsingError {
-//                print("Error", parsingError)
-//            }
-//        }
-//        task.resume()
-//    }
 }

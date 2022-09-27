@@ -18,7 +18,7 @@ class LaunchCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
     
-    
+    @IBOutlet weak var detailLabel: UILabel!
     
     @IBOutlet weak var cellView: UIView!
     
@@ -34,24 +34,29 @@ class LaunchCell: UITableViewCell {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
             if let date = cellViewModel?.date {
-                dateLabel.text = dateFormatter.string(from: date)
+                dateLabel.text = "Launch date: \(dateFormatter.string(from: date))"
             } else {
                 dateLabel.text = "not filled"
             }
+            
+            if let details = cellViewModel?.details {
+                detailLabel.isHidden = false
+                detailLabel.text = details
+            } else {
+                detailLabel.isHidden = true
+            }
+            
+            if ((cellViewModel?.upcoming) == true ) {
+                cellView.backgroundColor = .brown
+            } else {
+                cellView.backgroundColor = .clear
+            }
 
-            
-            thumbnailImageView.image = UIImage(systemName: "photos")
-            
+
+ 
         }
     }
-    
-    var downloadedImage: UIImage? {
-        didSet {
-            thumbnailImageView.image = downloadedImage
-        }
-    }
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         initView()

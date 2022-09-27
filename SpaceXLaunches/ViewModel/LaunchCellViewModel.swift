@@ -9,14 +9,10 @@ import Foundation
 import UIKit
 
 struct LaunchCellViewModel {
-//    private var imageLoader: ImageLoaderProtocol
-    
     
     var rocketName: String
     var details: String
     var upcoming: Bool
-//    var dateString: String
-    
     var date: Date
     
     var webcast: String?
@@ -26,6 +22,4 @@ struct LaunchCellViewModel {
     
     var smallImageString: String?
     var largeImageString: String?
-    
-    
 }
