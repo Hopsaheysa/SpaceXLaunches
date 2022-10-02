@@ -10,10 +10,8 @@ import Foundation
 class LaunchViewModel {
     private var launchService: LaunchServiceProtocol
     
-    
     var reloadTableView: (() -> Void)?
     var showError: (() -> Void)?
-    
     var launches = Launches()
     var order: Order? = Order(fromRawValue: "other") {
         didSet {
@@ -32,7 +30,6 @@ class LaunchViewModel {
             reloadTableView?()
         }
     }
-    
     
     var error: String? {
         didSet {
@@ -61,15 +58,21 @@ class LaunchViewModel {
         self.launches = launches
         var vms = [LaunchCellViewModel]()
         
-        if order == .descending {
-            for launch in launches {
-                vms.insert(createCellModel(launch: launch), at: 0)
-            }
-        } else {
-            for launch in launches {
-                vms.append(createCellModel(launch: launch))
-            }
+        for launch in launches {
+            vms.append(createCellModel(launch: launch))
         }
+        
+        switch order {
+        case .ascending:
+            vms = vms.sorted { $0.date < $1.date }
+        case .nameDescending:
+            vms = vms.sorted { $0.rocketName > $1.rocketName }
+        case .nameAscending:
+            vms = vms.sorted { $0.rocketName < $1.rocketName }
+        default: // default .other order and date descending
+            vms = vms.sorted { $0.date > $1.date }
+        }
+
         launchCellViewModels = vms
     }
     
@@ -83,10 +86,6 @@ class LaunchViewModel {
         } else {
             self.error = ErrorEnum.unknownFail.errorDescription
         }
-    }
-    
-    func getDate(date: String) -> Date {
-        return DateHelper.stringToDate(date)
     }
     
     func createCellModel(launch: Launch) -> LaunchCellViewModel {

@@ -12,10 +12,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
-    
     @IBOutlet weak var detailTextView: UITextView!
-    @IBOutlet weak var detailTextViewHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var youtubeButton: UIButton!
     @IBOutlet weak var articleButton: UIButton!
     @IBOutlet weak var wikiButton: UIButton!
@@ -29,19 +26,22 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         if let imageURL = viewModel?.largeImageString {
             imageView.downloaded(from: imageURL)
+        } else if let imageSmall = viewModel?.smallImageString {
+            imageView.downloaded(from: imageSmall)
         }
         
-        if ((viewModel?.success) != true ) {
-            backgroundView.backgroundColor = UIColor(red: 1, green: 0.5, blue: 0.5, alpha: 1)
+        if ((viewModel?.success) == true) {
+            backgroundView.backgroundColor = UIColor(named: K.color.lightGreen)
+        } else if ((viewModel?.upcoming) == true){
+            backgroundView.backgroundColor = UIColor(named: K.color.lightBlue)
         } else {
-            backgroundView.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1)
+            backgroundView.backgroundColor = UIColor(named: K.color.lightRed)
         }
         
         titleLabel.text = viewModel?.rocketName
         
         if let detail = viewModel?.details {
             detailTextView.text = detail
-            detailTextViewHeightConstraint.constant = self.detailTextView.contentSize.height
         } else {
             detailTextView.isHidden = true
         }
@@ -63,7 +63,6 @@ class DetailViewController: UIViewController {
         if viewModel?.wikipedia == nil {
             wikiButton.isHidden = true
         }
-        
     }
     
     

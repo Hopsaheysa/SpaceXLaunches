@@ -10,6 +10,8 @@ import Foundation
 enum Order: String {
     case ascending = "Ascending"
     case descending = "Descending"
+    case nameAscending = "Name - Ascending"
+    case nameDescending = "Name - Descending"
     case other = "other"
     
     init(fromRawValue: String?) {

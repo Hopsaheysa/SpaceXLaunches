@@ -12,15 +12,21 @@ struct K {
         static let allLaunches = "https://api.spacexdata.com/v5/launches"
     }
     
-    struct segue {
-        static let toDetail = "launchesToDetail"
-    }
-    
     struct storyboard {
         static let main = "Main"
     }
     
     struct identifier {
         static let detailVC = "detailVC"
+    }
+    
+    struct defaultsKey {
+        static let order = "ORDER"
+    }
+    
+    struct color {
+        static let lightBlue = "LightBlue"
+        static let lightGreen = "LightGreen"
+        static let lightRed = "LightRed"
     }
 }

@@ -23,70 +23,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C3381130-A581-44FC-989A-34E34C24DBFF"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpaceXLaunches/ViewModel/LaunchViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "getLaunches()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C3381130-A581-44FC-989A-34E34C24DBFF - b962b96b205a7b4a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Array&lt;SpaceXLaunches.Launch&gt;&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in SpaceXLaunches.LaunchViewModel.getLaunches() -&gt; ()"
-                  moduleName = "SpaceXLaunches"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marek/Documents/Development/iOS/SpaceXLaunches/SpaceXLaunches/ViewModel/LaunchViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  uuid = "C3381130-A581-44FC-989A-34E34C24DBFF - b962b96b205a7b4a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Array&lt;SpaceXLaunches.Launch&gt;&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in SpaceXLaunches.LaunchViewModel.getLaunches() -&gt; ()"
-                  moduleName = "SpaceXLaunches"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marek/Documents/Development/iOS/SpaceXLaunches/SpaceXLaunches/ViewModel/LaunchViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "124">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "47A14A4D-2125-430D-9295-BD4288294B52"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpaceXLaunches/ViewController/LaunchesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "cellPressed(with:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F7E4214E-8E26-4BE6-83B9-4C103CFE9ECF"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -103,22 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8FE7332A-2BB3-4FF5-8B4D-A826090E3FDD"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpaceXLaunches/ViewController/LaunchesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9FFAA4D9-767C-4A8C-B2CC-43B4EBBFDF12"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -126,8 +46,8 @@
             filePath = "SpaceXLaunches/ViewController/DetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
@@ -183,33 +103,94 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3FAE3E59-B774-40C4-B586-46AF84D68360"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpaceXLaunches/ViewController/DetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F0B4EAEF-5EE0-4150-AA43-D544F9C4248D"
+            uuid = "BE841233-AA47-42C4-81E4-ECB99425B762"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SpaceXLaunches/ViewController/LaunchesViewController.swift"
+            filePath = "SpaceXLaunches/Model/ImageURLProtocol.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "searchBarCancelButtonClicked(_:)"
-            landmarkType = "7">
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "ImageURLProtocol"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "BE841233-AA47-42C4-81E4-ECB99425B762 - 2773273c485a974d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceXLaunches.ImageURLProtocol.cancelledOrComplete.getter : Swift.Bool"
+                  moduleName = "SpaceXLaunches"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marek/Documents/Development/iOS/SpaceXLaunches/SpaceXLaunches/Model/ImageURLProtocol.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "BE841233-AA47-42C4-81E4-ECB99425B762 - 8a03169627b3b541"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceXLaunches.ImageURLProtocol.cancelledOrComplete.setter : Swift.Bool"
+                  moduleName = "SpaceXLaunches"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marek/Documents/Development/iOS/SpaceXLaunches/SpaceXLaunches/Model/ImageURLProtocol.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  uuid = "BE841233-AA47-42C4-81E4-ECB99425B762 - 3814b623d807bfd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceXLaunches.ImageURLProtocol.cancelledOrComplete.modify : Swift.Bool"
+                  moduleName = "SpaceXLaunches"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marek/Documents/Development/iOS/SpaceXLaunches/SpaceXLaunches/Model/ImageURLProtocol.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "BE841233-AA47-42C4-81E4-ECB99425B762 - 8b2f0d1093d7017b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceXLaunches.ImageURLProtocol.cancelledOrComplete.modify : Swift.Bool with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "SpaceXLaunches"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marek/Documents/Development/iOS/SpaceXLaunches/SpaceXLaunches/Model/ImageURLProtocol.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "BE841233-AA47-42C4-81E4-ECB99425B762 - cde571ef048d3f5b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpaceXLaunches.ImageURLProtocol.init(request: Foundation.URLRequest, cachedResponse: Swift.Optional&lt;__C.NSCachedURLResponse&gt;, client: Swift.Optional&lt;__C.NSURLProtocolClient&gt;) -&gt; SpaceXLaunches.ImageURLProtocol"
+                  moduleName = "SpaceXLaunches"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marek/Documents/Development/iOS/SpaceXLaunches/SpaceXLaunches/Model/ImageURLProtocol.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

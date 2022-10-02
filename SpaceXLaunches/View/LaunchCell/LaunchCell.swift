@@ -49,7 +49,7 @@ class LaunchCell: UITableViewCell {
             }
             
             if ((cellViewModel?.upcoming) == true ) {
-                cellView.backgroundColor = UIColor(named: "LightBlue") ?? .blue
+                cellView.backgroundColor = .systemGray4
             }
             
             if ((cellViewModel?.success) == true ) {
@@ -76,15 +76,12 @@ class LaunchCell: UITableViewCell {
     
     func initView() {
         backgroundColor = .clear
-        
         preservesSuperviewLayoutMargins = false
         separatorInset = UIEdgeInsets.zero
         layoutMargins = UIEdgeInsets.zero
-        
+
         let tapCardGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
         cellView.addGestureRecognizer(tapCardGesture)
-        
-        
     }
     
     
