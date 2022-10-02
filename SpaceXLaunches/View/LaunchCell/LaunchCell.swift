@@ -49,9 +49,7 @@ class LaunchCell: UITableViewCell {
             }
             
             if ((cellViewModel?.upcoming) == true ) {
-                cellView.backgroundColor = .systemBlue
-            } else {
-                cellView.backgroundColor = .clear
+                cellView.backgroundColor = UIColor(named: "LightBlue") ?? .blue
             }
             
             if ((cellViewModel?.success) == true ) {
@@ -85,6 +83,8 @@ class LaunchCell: UITableViewCell {
         
         let tapCardGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
         cellView.addGestureRecognizer(tapCardGesture)
+        
+        
     }
     
     
@@ -94,6 +94,7 @@ class LaunchCell: UITableViewCell {
         thumbnailImageView.image = nil
         successImageView.isHidden = false
         successLabel.isHidden = false
+        cellView.backgroundColor = .clear
     }
     
     @objc func cellTapped() {

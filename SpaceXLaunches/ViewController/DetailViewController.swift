@@ -16,6 +16,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailTextView: UITextView!
     @IBOutlet weak var detailTextViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var youtubeButton: UIButton!
+    @IBOutlet weak var articleButton: UIButton!
+    @IBOutlet weak var wikiButton: UIButton!
+    
     @IBOutlet var backgroundView: UIView!
     
     var viewModel: LaunchCellViewModel?
@@ -49,6 +53,17 @@ class DetailViewController: UIViewController {
         } else {
             dateLabel.text = "not filled"
         }
+        
+        if viewModel?.youtubeId == nil {
+            youtubeButton.isHidden = true
+        }
+        if viewModel?.article == nil {
+            articleButton.isHidden = true
+        }
+        if viewModel?.wikipedia == nil {
+            wikiButton.isHidden = true
+        }
+        
     }
     
     
@@ -56,10 +71,10 @@ class DetailViewController: UIViewController {
         if let youtubeId = viewModel?.youtubeId {
             if let youtubeURL = URL(string: "youtube://\(youtubeId)"),
                UIApplication.shared.canOpenURL(youtubeURL) {
-                // redirect to app
+                // app
                 UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
             } else if let youtubeURL = URL(string: "https://www.youtube.com/watch?v=\(youtubeId)") {
-                // redirect through safari
+                // safari
                 UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
             }
         } else {

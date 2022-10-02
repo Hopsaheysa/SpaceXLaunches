@@ -9,19 +9,30 @@ import Foundation
 
 class LaunchViewModel {
     private var launchService: LaunchServiceProtocol
-    //    private var cellPressedDelegate: LaunchCellDelegate
     
     
     var reloadTableView: (() -> Void)?
     var showError: (() -> Void)?
     
     var launches = Launches()
+    var order: Order? = Order(fromRawValue: "other") {
+        didSet {
+            fetchData(launches: launches)
+        }
+    }
     
     var launchCellViewModels = [LaunchCellViewModel]() {
+        didSet {
+            filteredCellViewModels = launchCellViewModels
+        }
+    }
+    
+    var filteredCellViewModels = [LaunchCellViewModel]() {
         didSet {
             reloadTableView?()
         }
     }
+    
     
     var error: String? {
         didSet {
@@ -34,27 +45,19 @@ class LaunchViewModel {
     }
     
     
-    func getLaunches(with order: Order) {
+    func getLaunches() {
         launchService.getLaunches { success, result, error in
             if success, let launches = result {
-                self.fetchData(launches: launches, with: order)
+                self.fetchData(launches: launches)
             } else {
                 self.showError(error: error)
             }
         }
     }
     
-    func getFilteredLaunches(_ searchText: String) {
-        let filteredLaunches = launchCellViewModels.filter { viewModel in
-            viewModel.rocketName.contains(searchText)
-        }
-        
-        //        self.fetchData(launches: filteredLaunches)
-    }
     
     
-    
-    func fetchData(launches: Launches, with order: Order) {
+    func fetchData(launches: Launches) {
         self.launches = launches
         var vms = [LaunchCellViewModel]()
         
@@ -68,6 +71,10 @@ class LaunchViewModel {
             }
         }
         launchCellViewModels = vms
+    }
+    
+    func filterData(searchText: String) {
+        filteredCellViewModels = searchText.isEmpty ? launchCellViewModels : launchCellViewModels.filter { $0.rocketName.range(of: searchText, options: .caseInsensitive) != nil }
     }
     
     func showError(error: String?) {
@@ -109,11 +116,7 @@ class LaunchViewModel {
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> LaunchCellViewModel {
-        return launchCellViewModels[indexPath.row]
-    }
-    
-    func fetchImage() {
-        
+        return filteredCellViewModels[indexPath.row]
     }
     
 }

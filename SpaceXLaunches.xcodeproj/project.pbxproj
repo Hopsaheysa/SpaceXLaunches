@@ -27,6 +27,7 @@
 		EAD9CD6828DE3C5E00F734E7 /* LaunchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD9CD6728DE3C5E00F734E7 /* LaunchResponse.swift */; };
 		EAD9CD6B28DE3C9F00F734E7 /* LaunchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD9CD6928DE3C9F00F734E7 /* LaunchCell.swift */; };
 		EAD9CD6C28DE3C9F00F734E7 /* LaunchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD9CD6A28DE3C9F00F734E7 /* LaunchCell.xib */; };
+		EAE05BDB28E9DF09009DBA04 /* Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE05BDA28E9DF09009DBA04 /* Binder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		EAD9CD6728DE3C5E00F734E7 /* LaunchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchResponse.swift; sourceTree = "<group>"; };
 		EAD9CD6928DE3C9F00F734E7 /* LaunchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCell.swift; sourceTree = "<group>"; };
 		EAD9CD6A28DE3C9F00F734E7 /* LaunchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchCell.xib; sourceTree = "<group>"; };
+		EAE05BDA28E9DF09009DBA04 /* Binder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				EAD8FA3928E2F47B0091AB81 /* ImageURLProtocol.swift */,
 				EAD9CD6728DE3C5E00F734E7 /* LaunchResponse.swift */,
+				EAE05BDA28E9DF09009DBA04 /* Binder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				EA1E8BD028DCF257008BA395 /* AppDelegate.swift in Sources */,
 				EA036DFC28E1D4EE00494522 /* DateHelper.swift in Sources */,
 				EAD9CD6828DE3C5E00F734E7 /* LaunchResponse.swift in Sources */,
+				EAE05BDB28E9DF09009DBA04 /* Binder.swift in Sources */,
 				EA09543628DE576B007A8E60 /* LaunchCellViewModel.swift in Sources */,
 				EA09543428DE55C8007A8E60 /* K.swift in Sources */,
 				EA09543A28DF8777007A8E60 /* ErrorEnum.swift in Sources */,

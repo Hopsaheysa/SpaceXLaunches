@@ -141,12 +141,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="zy0-p9-2KY"/>
                     <connections>
+                        <outlet property="articleButton" destination="gdA-BZ-8rX" id="eEw-UE-b6k"/>
                         <outlet property="backgroundView" destination="uZB-H5-PKk" id="B32-Uc-rEe"/>
                         <outlet property="dateLabel" destination="kDA-AG-bYl" id="MM6-xl-KhX"/>
                         <outlet property="detailTextView" destination="K5Y-Hm-Tvf" id="50s-hm-xd8"/>
                         <outlet property="detailTextViewHeightConstraint" destination="0ly-It-iaC" id="ltL-Uy-ayu"/>
                         <outlet property="imageView" destination="TTL-Dl-LRJ" id="O74-UA-4K3"/>
                         <outlet property="titleLabel" destination="g7Z-8K-MbQ" id="JXs-TT-dz6"/>
+                        <outlet property="wikiButton" destination="8l8-R5-Hs5" id="lrO-aQ-5Kk"/>
+                        <outlet property="youtubeButton" destination="rwh-nG-wcz" id="hgK-LO-4tW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Tt-pr-YcT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -161,6 +164,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rd2-w2-oKE">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
