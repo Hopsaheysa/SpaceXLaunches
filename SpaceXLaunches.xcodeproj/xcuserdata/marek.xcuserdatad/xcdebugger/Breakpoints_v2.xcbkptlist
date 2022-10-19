@@ -39,54 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9FFAA4D9-767C-4A8C-B2CC-43B4EBBFDF12"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpaceXLaunches/ViewController/DetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9FFAA4D9-767C-4A8C-B2CC-43B4EBBFDF12 - e6f86578595af771"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SpaceXLaunches.DetailViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "SpaceXLaunches"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marek/Documents/Development/iOS/SpaceXLaunches/SpaceXLaunches/ViewController/DetailViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "1076">
-               </Location>
-               <Location
-                  uuid = "9FFAA4D9-767C-4A8C-B2CC-43B4EBBFDF12 - e6f86578595af771"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SpaceXLaunches.DetailViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "SpaceXLaunches"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marek/Documents/Development/iOS/SpaceXLaunches/SpaceXLaunches/ViewController/DetailViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "1540">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7A10C4AA-B926-49BA-93BB-2EB420C4F6B6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -191,6 +143,22 @@
                   offsetFromSymbolStart = "164">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7ADB35A5-F341-4DA8-B6EA-FD4F2ACFA37C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpaceXLaunches/ViewModel/LaunchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "LaunchViewModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -19,16 +19,49 @@ class DetailViewController: UIViewController {
     
     @IBOutlet var backgroundView: UIView!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     var viewModel: LaunchCellViewModel?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareLoadingView()
+        
         if let imageURL = viewModel?.largeImageString {
-            imageView.downloaded(from: imageURL)
+            imageView.downloaded(from: imageURL) { [weak self]  in
+                self?.showDetailView()
+            }
         } else if let imageSmall = viewModel?.smallImageString {
-            imageView.downloaded(from: imageSmall)
+            imageView.downloaded(from: imageSmall) { [weak self] in
+                self?.showDetailView()
+            }
         }
+    }
+    
+    func prepareLoadingView() {
+        titleLabel.isHidden = true
+        imageView.isHidden = true
+        dateLabel.isHidden = true
+        detailTextView.isHidden = true
+        youtubeButton.isHidden = true
+        articleButton.isHidden = true
+        wikiButton.isHidden = true
+        
+        spinner.isHidden = false
+        spinner.startAnimating()
+    }
+    
+    func showDetailView() {
+        titleLabel.isHidden = false
+        imageView.isHidden = false
+        dateLabel.isHidden = false
+        detailTextView.isHidden = false
+        youtubeButton.isHidden = false
+        articleButton.isHidden = false
+        wikiButton.isHidden = false
+        
+        spinner.isHidden = true
         
         if ((viewModel?.success) == true) {
             backgroundView.backgroundColor = UIColor(named: K.color.lightGreen)
@@ -64,7 +97,6 @@ class DetailViewController: UIViewController {
             wikiButton.isHidden = true
         }
     }
-    
     
     @IBAction func youtubeButtonPressed(_ sender: Any) {
         if let youtubeId = viewModel?.youtubeId {
