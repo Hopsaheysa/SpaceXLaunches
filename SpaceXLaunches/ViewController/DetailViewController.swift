@@ -20,14 +20,15 @@ class DetailViewController: UIViewController {
     @IBOutlet var backgroundView: UIView!
     
     var viewModel: LaunchCellViewModel?
+    var temporaryDirectoryURL: URL?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let imageURL = viewModel?.largeImageString {
-            imageView.downloaded(from: imageURL)
-        } else if let imageSmall = viewModel?.smallImageString {
-            imageView.downloaded(from: imageSmall)
+        if let imageURL = viewModel?.largeImageString, let temporaryDirectoryURL = temporaryDirectoryURL {
+            imageView.downloaded(from: imageURL, to: temporaryDirectoryURL)
+        } else if let imageSmall = viewModel?.smallImageString, let temporaryDirectoryURL = temporaryDirectoryURL {
+            imageView.downloaded(from: imageSmall, to: temporaryDirectoryURL)
         }
         
         if ((viewModel?.success) == true) {
@@ -64,6 +65,7 @@ class DetailViewController: UIViewController {
             wikiButton.isHidden = true
         }
     }
+    
     
     
     @IBAction func youtubeButtonPressed(_ sender: Any) {

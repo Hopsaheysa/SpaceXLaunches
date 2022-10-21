@@ -26,13 +26,43 @@ class LaunchesViewController: UIViewController, UINavigationControllerDelegate {
         LaunchViewModel()
     }()
     
+    var temporaryDirectoryURL: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let order = Order(fromRawValue: defaults.string(forKey: K.defaultsKey.order))
-
+        
         initNavBar()
         initView()
         initViewModel(with: order)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        createTemporaryFolder()
+    }
+    
+    func createTemporaryFolder() {
+        temporaryDirectoryURL = defaults.url(forKey: K.defaultsKey.temporaryFolderUrl)
+        if temporaryDirectoryURL == nil {
+            // sometimes folder exist even after reloading the app -> dont create one if it does
+            if !FileManager.default.fileExists(atPath: (temporaryDirectoryURL?.path) ?? "") {
+                let destinationURL: URL = FileManager.default.temporaryDirectory
+                
+                do {
+                    temporaryDirectoryURL = try FileManager.default.url(for: .itemReplacementDirectory,
+                                                                        in: .userDomainMask,
+                                                                        appropriateFor: destinationURL,
+                                                                        create: true)
+                    defaults.set(temporaryDirectoryURL, forKey: K.defaultsKey.temporaryFolderUrl)
+                    
+                } catch {
+                    //TODO: handle error differently?
+                    UserDefaults.standard.removeObject(forKey: K.defaultsKey.temporaryFolderUrl)
+                }
+            }
+        }
     }
     
     func initNavBar() {
@@ -116,6 +146,7 @@ extension LaunchesViewController: LaunchCellDelegate {
         if let detailVC = storyboard.instantiateViewController(withIdentifier: K.identifier.detailVC) as? DetailViewController {
             detailVC.modalPresentationStyle = .fullScreen
             detailVC.viewModel = cell
+            detailVC.temporaryDirectoryURL = temporaryDirectoryURL
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
@@ -136,7 +167,8 @@ extension LaunchesViewController: UITableViewDataSource {
         cell.cellDelegate = self
         
         if let smallImageUrl = cellVM.smallImageString {
-            cell.thumbnailImageView.downloaded(from: smallImageUrl)
+            //in this moment temporaryDirectory should be always set
+            cell.thumbnailImageView.downloaded(from: smallImageUrl, to: temporaryDirectoryURL!)
         } else {
             cell.thumbnailImageView.image = UIImage(systemName: "photo")
         }
