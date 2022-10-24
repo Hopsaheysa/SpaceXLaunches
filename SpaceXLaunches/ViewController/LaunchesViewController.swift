@@ -133,7 +133,9 @@ extension LaunchesViewController: UITableViewDataSource {
         
         if let smallImageUrl = cellVM.smallImageString {
             cell.thumbnailImageView.downloaded(from: smallImageUrl) { success in 
-                //TODO: image downloaded - completion handler can be used, bool can be added if the download was successful or not
+                if !success {
+                    cell.thumbnailImageView.image = UIImage(systemName: "photo")
+                }
             }
         } else {
             cell.thumbnailImageView.image = UIImage(systemName: "photo")
