@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit, completionHandler: @escaping () -> Void ) {
+    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit, completionHandler: @escaping (Bool) -> Void ) {
         contentMode = mode
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard
@@ -18,20 +18,18 @@ extension UIImageView {
                 let data = data, error == nil,
                 let image = UIImage(data: data)
             else {
-                completionHandler()
+                completionHandler(false)
                 return
             }
             DispatchQueue.main.async { [weak self] in
                 self?.image = image
-                completionHandler()
+                completionHandler(true)
             }
         }.resume()
     }
     
-    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit, completionHandler: @escaping () -> Void ) {
+    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit, completionHandler: @escaping (Bool) -> Void ) {
         guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode) {
-            completionHandler()
-        }
+        downloaded(from: url, contentMode: mode, completionHandler: completionHandler)
     }
 }

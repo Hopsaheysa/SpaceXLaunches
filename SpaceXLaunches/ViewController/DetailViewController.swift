@@ -17,8 +17,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var articleButton: UIButton!
     @IBOutlet weak var wikiButton: UIButton!
     
-    @IBOutlet var backgroundView: UIView!
-    
+
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var viewModel: LaunchCellViewModel?
@@ -29,38 +30,29 @@ class DetailViewController: UIViewController {
         prepareLoadingView()
         
         if let imageURL = viewModel?.largeImageString {
-            imageView.downloaded(from: imageURL) { [weak self]  in
-                self?.showDetailView()
+            imageView.downloaded(from: imageURL) { [weak self] success in
+                self?.showDetailView(success)
             }
         } else if let imageSmall = viewModel?.smallImageString {
-            imageView.downloaded(from: imageSmall) { [weak self] in
-                self?.showDetailView()
+            imageView.downloaded(from: imageSmall) { [weak self] success in
+                self?.showDetailView(success)
             }
+        } else {
+            showDetailView(false)
         }
     }
     
     func prepareLoadingView() {
-        titleLabel.isHidden = true
-        imageView.isHidden = true
-        dateLabel.isHidden = true
-        detailTextView.isHidden = true
-        youtubeButton.isHidden = true
-        articleButton.isHidden = true
-        wikiButton.isHidden = true
-        
+        detailView.isHidden = true
         spinner.isHidden = false
         spinner.startAnimating()
     }
     
-    func showDetailView() {
-        titleLabel.isHidden = false
-        imageView.isHidden = false
-        dateLabel.isHidden = false
-        detailTextView.isHidden = false
-        youtubeButton.isHidden = false
-        articleButton.isHidden = false
-        wikiButton.isHidden = false
-        
+    func showDetailView(_ success: Bool) {
+        if !success {
+            imageView.image = UIImage(systemName: "photo")
+        }
+        detailView.isHidden = false
         spinner.isHidden = true
         
         if ((viewModel?.success) == true) {
@@ -122,7 +114,6 @@ class DetailViewController: UIViewController {
     @IBAction func wikiButtonPressed(_ sender: Any) {
         openSafari(with: viewModel?.wikipedia)
     }
-    
     
     func openSafari(with urlOptionalString: String?) {
         guard let urlString = urlOptionalString, let url = URL(string: urlString) else {

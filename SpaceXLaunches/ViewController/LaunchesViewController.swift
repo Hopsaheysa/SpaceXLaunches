@@ -107,8 +107,6 @@ class LaunchesViewController: UIViewController, UINavigationControllerDelegate {
     }
 }
 
-
-
 //MARK: - LaunchCellDelegate
 extension LaunchesViewController: LaunchCellDelegate {
     func cellPressed(with cell: LaunchCellViewModel) {
@@ -127,8 +125,6 @@ extension LaunchesViewController: UITableViewDataSource {
         return viewModel.filteredCellViewModels.count
     }
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LaunchCell.identifier, for: indexPath) as? LaunchCell else { return UITableViewCell() }
         let cellVM = viewModel.getCellViewModel(at: indexPath)
@@ -136,13 +132,12 @@ extension LaunchesViewController: UITableViewDataSource {
         cell.cellDelegate = self
         
         if let smallImageUrl = cellVM.smallImageString {
-            cell.thumbnailImageView.downloaded(from: smallImageUrl) {
+            cell.thumbnailImageView.downloaded(from: smallImageUrl) { success in 
                 //TODO: image downloaded - completion handler can be used, bool can be added if the download was successful or not
             }
         } else {
             cell.thumbnailImageView.image = UIImage(systemName: "photo")
         }
-        
         return cell
     }
 }

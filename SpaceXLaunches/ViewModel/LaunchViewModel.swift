@@ -41,7 +41,6 @@ class LaunchViewModel {
         self.launchService = launchService
     }
     
-    
     func getLaunches() {
         launchService.getLaunches { success, result, error in
             if success, let launches = result {
@@ -51,8 +50,6 @@ class LaunchViewModel {
             }
         }
     }
-    
-    
     
     func fetchData(launches: Launches) {
         self.launches = launches
@@ -72,7 +69,6 @@ class LaunchViewModel {
         default: // default .other order and date descending
             vms = vms.sorted { $0.date > $1.date }
         }
-
         launchCellViewModels = vms
     }
     
@@ -117,5 +113,4 @@ class LaunchViewModel {
     func getCellViewModel(at indexPath: IndexPath) -> LaunchCellViewModel {
         return filteredCellViewModels[indexPath.row]
     }
-    
 }
