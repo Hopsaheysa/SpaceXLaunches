@@ -41,7 +41,6 @@ class LaunchViewModel {
         self.launchService = launchService
     }
     
-    
     func getLaunches() {
         launchService.getLaunches { success, result, error in
             if success, let launches = result {
@@ -51,8 +50,6 @@ class LaunchViewModel {
             }
         }
     }
-    
-    
     
     func fetchData(launches: Launches) {
         self.launches = launches
@@ -117,5 +114,4 @@ class LaunchViewModel {
     func getCellViewModel(at indexPath: IndexPath) -> LaunchCellViewModel {
         return filteredCellViewModels[indexPath.row]
     }
-    
 }

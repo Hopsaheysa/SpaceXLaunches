@@ -19,29 +19,28 @@ class DetailViewController: UIViewController {
     
     @IBOutlet var backgroundView: UIView!
     
-    var viewModel: LaunchCellViewModel?
+    var viewModel: LaunchCellViewModel!
     var temporaryDirectoryURL: URL?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let imageURL = viewModel?.largeImageString, let temporaryDirectoryURL = temporaryDirectoryURL {
+        if let imageURL = viewModel.largeImageString, let temporaryDirectoryURL = temporaryDirectoryURL {
             imageView.downloaded(from: imageURL, to: temporaryDirectoryURL)
-        } else if let imageSmall = viewModel?.smallImageString, let temporaryDirectoryURL = temporaryDirectoryURL {
+        } else if let imageSmall = viewModel.smallImageString, let temporaryDirectoryURL = temporaryDirectoryURL {
             imageView.downloaded(from: imageSmall, to: temporaryDirectoryURL)
         }
         
-        if ((viewModel?.success) == true) {
+        if ((viewModel.success) == true) {
             backgroundView.backgroundColor = UIColor(named: K.color.lightGreen)
-        } else if ((viewModel?.upcoming) == true){
+        } else if ((viewModel.upcoming) == true){
             backgroundView.backgroundColor = UIColor(named: K.color.lightBlue)
         } else {
             backgroundView.backgroundColor = UIColor(named: K.color.lightRed)
         }
         
-        titleLabel.text = viewModel?.rocketName
+        titleLabel.text = viewModel.rocketName
         
-        if let detail = viewModel?.details {
+        if let detail = viewModel.details {
             detailTextView.text = detail
         } else {
             detailTextView.isHidden = true
@@ -49,19 +48,15 @@ class DetailViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-        if let date = viewModel?.date {
-            dateLabel.text = "Launch date: \(dateFormatter.string(from: date))"
-        } else {
-            dateLabel.text = "not filled"
-        }
-        
-        if viewModel?.youtubeId == nil {
+        dateLabel.text = "Launch date: \(dateFormatter.string(from: viewModel.date ))"
+
+        if viewModel.youtubeId == nil {
             youtubeButton.isHidden = true
         }
-        if viewModel?.article == nil {
+        if viewModel.article == nil {
             articleButton.isHidden = true
         }
-        if viewModel?.wikipedia == nil {
+        if viewModel.wikipedia == nil {
             wikiButton.isHidden = true
         }
     }
@@ -69,7 +64,7 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func youtubeButtonPressed(_ sender: Any) {
-        if let youtubeId = viewModel?.youtubeId {
+        if let youtubeId = viewModel.youtubeId {
             if let youtubeURL = URL(string: "youtube://\(youtubeId)"),
                UIApplication.shared.canOpenURL(youtubeURL) {
                 // app
@@ -86,13 +81,12 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func articleButtonPressed(_ sender: Any) {
-        openSafari(with: viewModel?.article)
+        openSafari(with: viewModel.article)
     }
     
     @IBAction func wikiButtonPressed(_ sender: Any) {
-        openSafari(with: viewModel?.wikipedia)
+        openSafari(with: viewModel.wikipedia)
     }
-    
     
     func openSafari(with urlOptionalString: String?) {
         guard let urlString = urlOptionalString, let url = URL(string: urlString) else {

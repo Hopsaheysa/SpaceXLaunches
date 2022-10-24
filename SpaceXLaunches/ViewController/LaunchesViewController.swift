@@ -32,36 +32,21 @@ class LaunchesViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         let order = Order(fromRawValue: defaults.string(forKey: K.defaultsKey.order))
         
+        createTemporaryFolder()
+        
         initNavBar()
         initView()
         initViewModel(with: order)
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        createTemporaryFolder()
-    }
-    
     func createTemporaryFolder() {
-        temporaryDirectoryURL = defaults.url(forKey: K.defaultsKey.temporaryFolderUrl)
-        if temporaryDirectoryURL == nil {
-            // sometimes folder exist even after reloading the app -> dont create one if it does
-            if !FileManager.default.fileExists(atPath: (temporaryDirectoryURL?.path) ?? "") {
-                let destinationURL: URL = FileManager.default.temporaryDirectory
-                
-                do {
-                    temporaryDirectoryURL = try FileManager.default.url(for: .itemReplacementDirectory,
-                                                                        in: .userDomainMask,
-                                                                        appropriateFor: destinationURL,
-                                                                        create: true)
-                    defaults.set(temporaryDirectoryURL, forKey: K.defaultsKey.temporaryFolderUrl)
-                    
-                } catch {
-                    //TODO: handle error differently?
-                    UserDefaults.standard.removeObject(forKey: K.defaultsKey.temporaryFolderUrl)
-                }
-            }
+        do {
+            temporaryDirectoryURL = try FileUtils.getTempDirectory()
+        } catch {
+            //is alert suitable for this kind of issue?
+            let alert = UIAlertController(title: "Error", message: "Unable to create temporary directory. Images will not be saved locally.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
         }
     }
     
@@ -137,8 +122,6 @@ class LaunchesViewController: UIViewController, UINavigationControllerDelegate {
     }
 }
 
-
-
 //MARK: - LaunchCellDelegate
 extension LaunchesViewController: LaunchCellDelegate {
     func cellPressed(with cell: LaunchCellViewModel) {
@@ -158,8 +141,6 @@ extension LaunchesViewController: UITableViewDataSource {
         return viewModel.filteredCellViewModels.count
     }
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LaunchCell.identifier, for: indexPath) as? LaunchCell else { return UITableViewCell() }
         let cellVM = viewModel.getCellViewModel(at: indexPath)
@@ -167,12 +148,10 @@ extension LaunchesViewController: UITableViewDataSource {
         cell.cellDelegate = self
         
         if let smallImageUrl = cellVM.smallImageString {
-            //in this moment temporaryDirectory should be always set
             cell.thumbnailImageView.downloaded(from: smallImageUrl, to: temporaryDirectoryURL!)
         } else {
             cell.thumbnailImageView.image = UIImage(systemName: "photo")
         }
-        
         return cell
     }
 }

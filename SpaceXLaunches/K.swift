@@ -22,7 +22,6 @@ struct K {
     
     struct defaultsKey {
         static let order = "ORDER"
-        static let temporaryFolderUrl = "temporaryFolderUrl"
     }
     
     struct color {
