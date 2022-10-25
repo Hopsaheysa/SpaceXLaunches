@@ -19,7 +19,7 @@ struct Launch: Codable {
     var dateString: String?
     
     var date: Date?
-
+    
     var article: String?
     var wikipedia: String?
     var youtubeId: String?
@@ -53,10 +53,7 @@ extension Launch {
         
         let container = try decoder.container(keyedBy: LaunchKeys.self)
         rocketName = try? container.decode(String.self, forKey: .rocketName)
-        
-        
         details = try? container.decode(String.self, forKey: .details)
-        
         upcoming = try? container.decode(Bool.self, forKey: .upcoming)
         success = try? container.decode(Bool.self, forKey: .success)
         

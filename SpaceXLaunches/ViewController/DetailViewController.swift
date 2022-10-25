@@ -17,30 +17,66 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var articleButton: UIButton!
     @IBOutlet weak var wikiButton: UIButton!
     
-    @IBOutlet var backgroundView: UIView!
+
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    var viewModel: LaunchCellViewModel?
-    
+    var viewModel: LaunchCellViewModel!
+    var temporaryDirectoryURL: URL!
+    let imageDownloader = ImageDownloader.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let imageURL = viewModel?.largeImageString {
-            imageView.downloaded(from: imageURL)
-        } else if let imageSmall = viewModel?.smallImageString {
-            imageView.downloaded(from: imageSmall)
-        }
+        prepareLoadingView()
         
-        if ((viewModel?.success) == true) {
+        if let imageURL = viewModel?.largeImageString {
+            imageDownloader.downloadImage(from: imageURL, to: temporaryDirectoryURL) { [weak self] success, image in
+                self?.showDetailView(success)
+                self?.setImage(success: success, image: image)
+            }
+        } else if let imageSmall = viewModel?.smallImageString {
+            imageDownloader.downloadImage(from: imageSmall, to: temporaryDirectoryURL) { [weak self] success, image in
+                self?.showDetailView(success)
+                self?.setImage(success: success, image: image)
+            }
+        } else {
+            showDetailView(false)
+        }
+    }
+    
+    func prepareLoadingView() {
+        detailView.isHidden = true
+        spinner.isHidden = false
+        spinner.startAnimating()
+    }
+    
+    func setImage(success: Bool, image: UIImage?) {
+        if success {
+            imageView.image = image
+        } else {
+            imageView.image = UIImage(systemName: "photo")
+        }
+    }
+    
+    func showDetailView(_ success: Bool) {
+        if !success {
+            imageView.image = UIImage(systemName: "photo")
+        }
+        detailView.isHidden = false
+        spinner.isHidden = true
+        
+        if viewModel.success == true {
             backgroundView.backgroundColor = UIColor(named: K.color.lightGreen)
-        } else if ((viewModel?.upcoming) == true){
+        } else if viewModel.upcoming == true {
             backgroundView.backgroundColor = UIColor(named: K.color.lightBlue)
         } else {
             backgroundView.backgroundColor = UIColor(named: K.color.lightRed)
         }
         
-        titleLabel.text = viewModel?.rocketName
+        titleLabel.text = viewModel.rocketName
         
-        if let detail = viewModel?.details {
+        if let detail = viewModel.details {
             detailTextView.text = detail
         } else {
             detailTextView.isHidden = true
@@ -48,26 +84,23 @@ class DetailViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-        if let date = viewModel?.date {
-            dateLabel.text = "Launch date: \(dateFormatter.string(from: date))"
-        } else {
-            dateLabel.text = "not filled"
-        }
-        
-        if viewModel?.youtubeId == nil {
+        dateLabel.text = "Launch date: \(dateFormatter.string(from: viewModel.date))"
+
+        if viewModel.youtubeId == nil {
             youtubeButton.isHidden = true
         }
-        if viewModel?.article == nil {
+        if viewModel.article == nil {
             articleButton.isHidden = true
         }
-        if viewModel?.wikipedia == nil {
+        if viewModel.wikipedia == nil {
             wikiButton.isHidden = true
         }
     }
     
     
+    
     @IBAction func youtubeButtonPressed(_ sender: Any) {
-        if let youtubeId = viewModel?.youtubeId {
+        if let youtubeId = viewModel.youtubeId {
             if let youtubeURL = URL(string: "youtube://\(youtubeId)"),
                UIApplication.shared.canOpenURL(youtubeURL) {
                 // app
@@ -84,13 +117,12 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func articleButtonPressed(_ sender: Any) {
-        openSafari(with: viewModel?.article)
+        openSafari(with: viewModel.article)
     }
     
     @IBAction func wikiButtonPressed(_ sender: Any) {
-        openSafari(with: viewModel?.wikipedia)
+        openSafari(with: viewModel.wikipedia)
     }
-    
     
     func openSafari(with urlOptionalString: String?) {
         guard let urlString = urlOptionalString, let url = URL(string: urlString) else {

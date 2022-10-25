@@ -9,9 +9,8 @@ import Foundation
 import UIKit
 
 struct LaunchCellViewModel {
-    
     var rocketName: String
-    var details: String
+    var details: String?
     var upcoming: Bool
     var success: Bool
     var date: Date

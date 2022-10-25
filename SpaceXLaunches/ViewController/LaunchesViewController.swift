@@ -14,6 +14,7 @@ class LaunchesViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     
     let defaults = UserDefaults.standard
+    let imageDownloader = ImageDownloader.shared
     let refreshControl = UIRefreshControl()
     
     lazy var searchController: UISearchController = ({
@@ -26,13 +27,23 @@ class LaunchesViewController: UIViewController, UINavigationControllerDelegate {
         LaunchViewModel()
     }()
     
+    var temporaryDirectoryURL: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let order = Order(fromRawValue: defaults.string(forKey: K.defaultsKey.order))
-
+        
+        createTemporaryFolder()
+        
         initNavBar()
         initView()
         initViewModel(with: order)
+    }
+    
+    func createTemporaryFolder() {
+        if let tempDir = FileUtils.getTempDirectory() {
+            temporaryDirectoryURL = tempDir
+        }
     }
     
     func initNavBar() {
@@ -107,8 +118,6 @@ class LaunchesViewController: UIViewController, UINavigationControllerDelegate {
     }
 }
 
-
-
 //MARK: - LaunchCellDelegate
 extension LaunchesViewController: LaunchCellDelegate {
     func cellPressed(with cell: LaunchCellViewModel) {
@@ -116,6 +125,7 @@ extension LaunchesViewController: LaunchCellDelegate {
         if let detailVC = storyboard.instantiateViewController(withIdentifier: K.identifier.detailVC) as? DetailViewController {
             detailVC.modalPresentationStyle = .fullScreen
             detailVC.viewModel = cell
+            detailVC.temporaryDirectoryURL = temporaryDirectoryURL
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
@@ -127,8 +137,6 @@ extension LaunchesViewController: UITableViewDataSource {
         return viewModel.filteredCellViewModels.count
     }
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LaunchCell.identifier, for: indexPath) as? LaunchCell else { return UITableViewCell() }
         let cellVM = viewModel.getCellViewModel(at: indexPath)
@@ -136,11 +144,16 @@ extension LaunchesViewController: UITableViewDataSource {
         cell.cellDelegate = self
         
         if let smallImageUrl = cellVM.smallImageString {
-            cell.thumbnailImageView.downloaded(from: smallImageUrl)
+            imageDownloader.downloadImage(from: smallImageUrl, to: temporaryDirectoryURL) { success, image in
+                if success {
+                    cell.thumbnailImageView.image = image
+                } else {
+                    cell.thumbnailImageView.image = UIImage(systemName: "photo")
+                }
+            }
         } else {
             cell.thumbnailImageView.image = UIImage(systemName: "photo")
         }
-        
         return cell
     }
 }
