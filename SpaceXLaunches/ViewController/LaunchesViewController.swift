@@ -14,6 +14,7 @@ class LaunchesViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     
     let defaults = UserDefaults.standard
+    let imageDownloader = ImageDownloader.shared
     let refreshControl = UIRefreshControl()
     
     lazy var searchController: UISearchController = ({
@@ -40,13 +41,8 @@ class LaunchesViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func createTemporaryFolder() {
-        do {
-            temporaryDirectoryURL = try FileUtils.getTempDirectory()
-        } catch {
-            //is alert suitable for this kind of issue?
-            let alert = UIAlertController(title: "Error", message: "Unable to create temporary directory. Images will not be saved locally.", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
+        if let tempDir = FileUtils.getTempDirectory() {
+            temporaryDirectoryURL = tempDir
         }
     }
     
@@ -148,8 +144,10 @@ extension LaunchesViewController: UITableViewDataSource {
         cell.cellDelegate = self
         
         if let smallImageUrl = cellVM.smallImageString {
-            cell.thumbnailImageView.downloaded(from: smallImageUrl) { success in 
-                if !success {
+            imageDownloader.downloadImage(from: smallImageUrl, to: temporaryDirectoryURL) { success, image in
+                if success {
+                    cell.thumbnailImageView.image = image
+                } else {
                     cell.thumbnailImageView.image = UIImage(systemName: "photo")
                 }
             }

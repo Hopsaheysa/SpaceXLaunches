@@ -23,19 +23,22 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var viewModel: LaunchCellViewModel!
-    var temporaryDirectoryURL: URL?
+    var temporaryDirectoryURL: URL!
+    let imageDownloader = ImageDownloader.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareLoadingView()
         
         if let imageURL = viewModel?.largeImageString {
-            imageView.downloaded(from: imageURL) { [weak self] success in
+            imageDownloader.downloadImage(from: imageURL, to: temporaryDirectoryURL) { [weak self] success, image in
                 self?.showDetailView(success)
+                self?.setImage(success: success, image: image)
             }
         } else if let imageSmall = viewModel?.smallImageString {
-            imageView.downloaded(from: imageSmall) { [weak self] success in
+            imageDownloader.downloadImage(from: imageSmall, to: temporaryDirectoryURL) { [weak self] success, image in
                 self?.showDetailView(success)
+                self?.setImage(success: success, image: image)
             }
         } else {
             showDetailView(false)
@@ -48,6 +51,14 @@ class DetailViewController: UIViewController {
         spinner.startAnimating()
     }
     
+    func setImage(success: Bool, image: UIImage?) {
+        if success {
+            imageView.image = image
+        } else {
+            imageView.image = UIImage(systemName: "photo")
+        }
+    }
+    
     func showDetailView(_ success: Bool) {
         if !success {
             imageView.image = UIImage(systemName: "photo")
@@ -55,9 +66,9 @@ class DetailViewController: UIViewController {
         detailView.isHidden = false
         spinner.isHidden = true
         
-        if ((viewModel.success) == true) {
+        if viewModel.success == true {
             backgroundView.backgroundColor = UIColor(named: K.color.lightGreen)
-        } else if ((viewModel.upcoming) == true){
+        } else if viewModel.upcoming == true {
             backgroundView.backgroundColor = UIColor(named: K.color.lightBlue)
         } else {
             backgroundView.backgroundColor = UIColor(named: K.color.lightRed)
@@ -73,7 +84,7 @@ class DetailViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-        dateLabel.text = "Launch date: \(dateFormatter.string(from: viewModel.date ))"
+        dateLabel.text = "Launch date: \(dateFormatter.string(from: viewModel.date))"
 
         if viewModel.youtubeId == nil {
             youtubeButton.isHidden = true

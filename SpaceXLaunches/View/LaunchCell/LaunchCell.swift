@@ -41,16 +41,16 @@ class LaunchCell: UITableViewCell {
                 detailLabel.isHidden = true
             }
             
-            if ((cellViewModel.upcoming) == true ) {
+            if cellViewModel.upcoming == true {
                 cellView.backgroundColor = .systemGray4
             }
             
-            if ((cellViewModel.success) == true ) {
+            if cellViewModel.success == true {
                 successLabel.text = "Success"
                 successImageView.image = UIImage(systemName: "checkmark.seal.fill")
                 successImageView.tintColor = .green
             } else {
-                if ((cellViewModel.upcoming) == true ) {
+                if cellViewModel.upcoming == true {
                     successImageView.isHidden = true
                     successLabel.isHidden = true
                 } else {

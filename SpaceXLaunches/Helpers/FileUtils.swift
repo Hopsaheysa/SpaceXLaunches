@@ -8,8 +8,8 @@
 import Foundation
 
 class FileUtils {
-    static func getTempDirectory() throws -> URL? {
-        return try FileManager.default.url(for: .itemReplacementDirectory,
+    static func getTempDirectory() -> URL? {
+        return try? FileManager.default.url(for: .itemReplacementDirectory,
                                            in: .userDomainMask,
                                            appropriateFor: FileManager.default.temporaryDirectory,
                                            create: true)

@@ -14,7 +14,6 @@
 		EA09543628DE576B007A8E60 /* LaunchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09543528DE576B007A8E60 /* LaunchCellViewModel.swift */; };
 		EA09543828DE5794007A8E60 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09543728DE5794007A8E60 /* LaunchViewModel.swift */; };
 		EA09543A28DF8777007A8E60 /* ErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09543928DF8777007A8E60 /* ErrorEnum.swift */; };
-		EA1E77E028E231E600974BC8 /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1E77DF28E231E600974BC8 /* UIImageViewExt.swift */; };
 		EA1E8BD028DCF257008BA395 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1E8BCF28DCF257008BA395 /* AppDelegate.swift */; };
 		EA1E8BD428DCF257008BA395 /* LaunchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1E8BD328DCF257008BA395 /* LaunchesViewController.swift */; };
 		EA1E8BD728DCF257008BA395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1E8BD528DCF257008BA395 /* Main.storyboard */; };
@@ -38,7 +37,6 @@
 		EA09543528DE576B007A8E60 /* LaunchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCellViewModel.swift; sourceTree = "<group>"; };
 		EA09543728DE5794007A8E60 /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
 		EA09543928DF8777007A8E60 /* ErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEnum.swift; sourceTree = "<group>"; };
-		EA1E77DF28E231E600974BC8 /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
 		EA1E8BCC28DCF257008BA395 /* SpaceXLaunches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceXLaunches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA1E8BCF28DCF257008BA395 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA1E8BD328DCF257008BA395 /* LaunchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 				EA6520A528E33F15001FE061 /* OrderEnum.swift */,
 				EA09543928DF8777007A8E60 /* ErrorEnum.swift */,
 				EAC9E1A82907219A006A56D6 /* FileUtils.swift */,
-				EAC9E1AA290726AE006A56D6 /* ImageDownloader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -82,7 +79,6 @@
 		EA1E77DE28E231C900974BC8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				EA1E77DF28E231E600974BC8 /* UIImageViewExt.swift */,
 				EAC9E1A629071E0C006A56D6 /* URLExt.swift */,
 			);
 			path = Extension;
@@ -136,6 +132,7 @@
 		EAD9CD5E28DE387D00F734E7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				EAC9E1AA290726AE006A56D6 /* ImageDownloader.swift */,
 				EA09542F28DE4D70007A8E60 /* LaunchService.swift */,
 			);
 			path = Services;
@@ -249,7 +246,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAC9E1A729071E0C006A56D6 /* URLExt.swift in Sources */,
-				EA1E77E028E231E600974BC8 /* UIImageViewExt.swift in Sources */,
 				EA036DFE28E1F70800494522 /* DetailViewController.swift in Sources */,
 				EAC9E1A92907219A006A56D6 /* FileUtils.swift in Sources */,
 				EA1E8BD428DCF257008BA395 /* LaunchesViewController.swift in Sources */,
