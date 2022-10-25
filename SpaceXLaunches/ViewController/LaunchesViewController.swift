@@ -26,13 +26,28 @@ class LaunchesViewController: UIViewController, UINavigationControllerDelegate {
         LaunchViewModel()
     }()
     
+    var temporaryDirectoryURL: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let order = Order(fromRawValue: defaults.string(forKey: K.defaultsKey.order))
-
+        
+        createTemporaryFolder()
+        
         initNavBar()
         initView()
         initViewModel(with: order)
+    }
+    
+    func createTemporaryFolder() {
+        do {
+            temporaryDirectoryURL = try FileUtils.getTempDirectory()
+        } catch {
+            //is alert suitable for this kind of issue?
+            let alert = UIAlertController(title: "Error", message: "Unable to create temporary directory. Images will not be saved locally.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+        }
     }
     
     func initNavBar() {
@@ -114,6 +129,7 @@ extension LaunchesViewController: LaunchCellDelegate {
         if let detailVC = storyboard.instantiateViewController(withIdentifier: K.identifier.detailVC) as? DetailViewController {
             detailVC.modalPresentationStyle = .fullScreen
             detailVC.viewModel = cell
+            detailVC.temporaryDirectoryURL = temporaryDirectoryURL
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }

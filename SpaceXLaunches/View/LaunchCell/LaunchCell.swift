@@ -11,17 +11,14 @@ protocol LaunchCellDelegate {
     func cellPressed(with cell: LaunchCellViewModel)
 }
 
-
 class LaunchCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
-    
     @IBOutlet weak var successLabel: UILabel!
     @IBOutlet weak var successImageView: UIImageView!
     @IBOutlet weak var detailLabel: UILabel!
-    
     @IBOutlet weak var cellView: UIView!
     
     var cellDelegate: LaunchCellDelegate?
@@ -29,35 +26,31 @@ class LaunchCell: UITableViewCell {
     class var identifier: String { return String(describing: self) }
     class var nib: UINib { return UINib(nibName: identifier, bundle: nil)}
     
-    var cellViewModel: LaunchCellViewModel? {
+    var cellViewModel: LaunchCellViewModel! {
         didSet {
-            nameLabel.text = cellViewModel?.rocketName
+            nameLabel.text = cellViewModel.rocketName
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-            if let date = cellViewModel?.date {
-                dateLabel.text = "Launch date: \(dateFormatter.string(from: date))"
-            } else {
-                dateLabel.text = "not filled"
-            }
+            dateLabel.text = "Launch date: \(dateFormatter.string(from: cellViewModel.date))"
             
-            if let details = cellViewModel?.details {
+            if let details = cellViewModel.details {
                 detailLabel.isHidden = false
                 detailLabel.text = details
             } else {
                 detailLabel.isHidden = true
             }
             
-            if ((cellViewModel?.upcoming) == true ) {
+            if ((cellViewModel.upcoming) == true ) {
                 cellView.backgroundColor = .systemGray4
             }
             
-            if ((cellViewModel?.success) == true ) {
+            if ((cellViewModel.success) == true ) {
                 successLabel.text = "Success"
                 successImageView.image = UIImage(systemName: "checkmark.seal.fill")
                 successImageView.tintColor = .green
             } else {
-                if ((cellViewModel?.upcoming) == true ) {
+                if ((cellViewModel.upcoming) == true ) {
                     successImageView.isHidden = true
                     successLabel.isHidden = true
                 } else {
@@ -68,7 +61,7 @@ class LaunchCell: UITableViewCell {
             }
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         initView()
@@ -79,11 +72,10 @@ class LaunchCell: UITableViewCell {
         preservesSuperviewLayoutMargins = false
         separatorInset = UIEdgeInsets.zero
         layoutMargins = UIEdgeInsets.zero
-
+        
         let tapCardGesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
         cellView.addGestureRecognizer(tapCardGesture)
     }
-    
     
     override func prepareForReuse() {
         super.prepareForReuse()
